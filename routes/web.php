@@ -18,7 +18,11 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
-    return vire('about');
+    return view('about', [
+        "name" => "Amri Elyasa",
+        "email" => "aelyasa@student.telkomuniversity.ac.id",
+        "image" => "muka-kocheng.jpg"
+    ]);
 });
 
 Route::get('/blog', function () {
