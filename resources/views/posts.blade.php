@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <h1>Halaman home</h1>
+
+    <h1>Halaman Posts</h1>
     
 @endsection
