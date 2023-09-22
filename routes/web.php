@@ -29,7 +29,22 @@ Route::get('/about', function () {
 });
 
 Route::get('/blog', function () {
+
+    $postingan_aja = [
+        [
+            "title" => "Judul post pertama",
+            "author" => "Will Smith",
+            "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. A laudantium sint doloribus voluptates iste qui labore hic fuga dolore recusandae."
+        ],
+        [
+            "title" => "Judul post kedua",
+            "author" => "james Bond",
+            "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. A laudantium sint doloribus voluptates iste qui labore hic fuga dolore recusandae. sama aja sih."
+        ]
+    ];
     return view('posts', [
-        "title" => "Posts"
+        "title" => "Posts",
+        "postingan" => $postingan_aja
     ]);
 });
+
