@@ -21,19 +21,12 @@ class Post
 
     public static function all()
     {
-        return self::$postingan_aja;
+        return collect(self::$postingan_aja);
     }
 
     public static function find($slug)
     {
-        $all_post = self::$postingan_aja;
-        $post_found = [];
-        foreach ($all_post as $value) {
-            if($value["slug"] === $slug){
-                $post_found = $value;
-            }
-        }
-
-        return $post_found;
+        $all_post = static::all();
+        return $all_post->firstWhere('slug', $slug);
     }
 }

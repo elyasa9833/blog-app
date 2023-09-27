@@ -13,7 +13,7 @@
           <a class="nav-link" href="/about">About</a>
         </li>
         <li class="nav-item @if ($title == 'Posts') active @endif">
-          <a class="nav-link" href="/blog">Blog</a>
+          <a class="nav-link" href="/posts">Blog</a>
         </li>
     </ul>
     </div>
