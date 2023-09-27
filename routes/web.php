@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,53 +31,17 @@ Route::get('/about', function () {
 
 Route::get('/blog', function () {
 
-    $postingan_aja = [
-        [
-            "title" => "Judul post pertama",
-            "slug" => "post-pertama",
-            "author" => "Will Smith",
-            "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. A laudantium sint doloribus voluptates iste qui labore hic fuga dolore recusandae."
-        ],
-        [
-            "title" => "Judul post kedua",
-            "slug" => "post-kedua",
-            "author" => "james Bond",
-            "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. A laudantium sint doloribus voluptates iste qui labore hic fuga dolore recusandae. sama aja sih."
-        ]
-    ];
     return view('posts', [
         "title" => "Posts",
-        "postingan" => $postingan_aja
+        "postingan" => Post::all()
     ]);
 });
 
 // Halaman single post
 Route::get('posts/{slug}', function ($slug) {
 
-    $postingan_aja = [
-        [
-            "title" => "Judul post pertama",
-            "slug" => "post-pertama",
-            "author" => "Will Smith",
-            "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. A laudantium sint doloribus voluptates iste qui labore hic fuga dolore recusandae."
-        ],
-        [
-            "title" => "Judul post kedua",
-            "slug" => "post-kedua",
-            "author" => "james Bond",
-            "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. A laudantium sint doloribus voluptates iste qui labore hic fuga dolore recusandae. sama aja sih."
-        ]
-    ];
-
-    $post_baru = [];
-    foreach ($postingan_aja as $value) {
-        if($value["slug"] === $slug){
-            $post_baru = $value;
-        }
-    }
-
     return view('post', [
         "title" => "Single post",
-        "single_post" => $post_baru
+        "single_post" => Post::find($slug)
     ]);
 });
