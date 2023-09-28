@@ -2,10 +2,10 @@
 
 @section('container')
     <article>
-        <h2>{{ $single_post["title"] }}</h2>
-        <h5>{{ $single_post["author"] }}</h5>
-        <p>{{ $single_post["body"] }}</p>
+        <h2>{{ $single_post->title }}</h2>
+        <h5>{{ $single_post->author }}</h5>
+        {{ $single_post->body }}
     </article>
 
-    <a href="/blog">Back to posts</a>
+    <a href="/posts">Back to posts</a>
 @endsection
