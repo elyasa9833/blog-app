@@ -16,8 +16,8 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function user()
+    public function author() // column 'user_id' with alias 'author'
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
