@@ -19,7 +19,7 @@ class PostController extends Controller
     {
         return view('post', [
             "title" => "Single post",
-            "single_post" => $post
+            "post" => $post
         ]);
     }
 }
