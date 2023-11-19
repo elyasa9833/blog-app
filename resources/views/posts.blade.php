@@ -9,6 +9,10 @@
                 @if (request('category'))
                     <input type="hidden" name="category" value="{{ request('category') }}">
                 @endif
+
+                @if (request('author'))
+                    <input type="hidden" name="author" value="{{ request('author') }}">
+                @endif
                 <div class="input-group mb-3">
                     <input type="text" name="search" class="form-control" placeholder="Search anything..." value="{{request('search')}}">
                     <button class="btn btn-danger" type="submit">Search</button>
@@ -23,7 +27,7 @@
         <div class="card-body text-center">
             <h5 class="card-title"><a href="/posts/{{ $postingan[0]->slug }}" class="text-dark text-decoration-none">{{ $postingan[0]->title }}</a></h5>
             <p><small class="text-muted">
-                By. <a href="/authors/{{ $postingan[0]->author->username }}">{{ $postingan[0]->author->name }}</a> in <a href="/posts?category={{ $postingan[0]->category->slug }}">{{ $postingan[0]->category->name }}</a> {{ $postingan[0]->created_at->diffForHumans() }}
+                By. <a href="/posts?author={{ $postingan[0]->author->username }}">{{ $postingan[0]->author->name }}</a> in <a href="/posts?category={{ $postingan[0]->category->slug }}">{{ $postingan[0]->category->name }}</a> {{ $postingan[0]->created_at->diffForHumans() }}
             </small></p>
 
             <p class="card-text">{{ $postingan[0]->excerpt }}</p>
@@ -41,7 +45,7 @@
                         <div class="card-body">
                           <h5 class="card-title">{{ $post->title }}</h5>
                           <p><small class="text-muted">
-                            By. <a href="/authors/{{ $post->author->username }}">{{ $post->author->name }}</a> {{ $post->created_at->diffForHumans() }}
+                            By. <a href="/posts?author={{ $post->author->username }}">{{ $post->author->name }}</a> {{ $post->created_at->diffForHumans() }}
                           </small></p>
 
                           <p class="card-text">{{ $post->excerpt }}</p>

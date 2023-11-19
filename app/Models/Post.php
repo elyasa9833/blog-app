@@ -26,6 +26,13 @@ class Post extends Model
                 $query->where('slug', $category);
             });
         });
+
+        // cari bedasarkan author
+        $query->when($filters['author'] ?? false, fn($query, $author) => // arrow function
+            $query->whereHas('author', fn($query) => 
+                $query->where('username', $author)
+            )
+        );
     }
 
     public function category()
