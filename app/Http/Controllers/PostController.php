@@ -9,10 +9,16 @@ class PostController extends Controller
 {
     public function index()
     {
+        $post = Post::latest(); // get postingan terbaru
+        if(request('search')){ // jika ada search, tampilkan 'title like % search % atau 'body like % search %'
+            $post = Post::where('title', 'like', '%'. request('search') .'%')
+                    ->orWhere('body', 'like', '%'. request('search') .'%');
+        }
+
         return view('posts', [
             "title" => "All Posts",
             "active" => "posts",
-            "postingan" => Post::latest()->get() // get postingan terbaru
+            "postingan" => $post->get()
         ]);
     }
 
