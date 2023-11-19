@@ -14,10 +14,11 @@ class Post extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        if(isset($filters['search']) ? $filters['search'] : false){ // jika ada search, tampilkan 'title like % search % atau 'body like % search %'
-            return $query = Post::where('title', 'like', '%'. $filters['search'] .'%')
-                            ->orWhere('body', 'like', '%'. $filters['search'] .'%');
-        }
+        // jika ada search, tampilkan 'title like % search % atau 'body like % search %'
+        $query->when($filters['search'] ?? false, function($query, $search){ // null coalescing operator
+            return $query->where('title', 'like', '%'. $search .'%')
+                        ->orWhere('body', 'like', '%'. $search .'%');
+        });
     }
 
     public function category()
